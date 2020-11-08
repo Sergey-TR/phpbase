@@ -9,43 +9,62 @@ $inputText = $_POST['translation'];
 
 function textTranslation ($text) {
  
-    $word = array(
+    $letters = [
  
-    "а" => "a",
-    "б" => "b",
-    "в" => "v",
-    "г" => "g",
-    "д" => "d",
-    "е" => "e",
-    "ё" => "yo",
-    "ж" => "zh",
-    "з" => "z",
-    "и" => "i",
-    "й" => "iy",
-    "к" => "k",
-    "л" => "l",
-    "м" => "m",
-    "н" => "n",
-    "о" => "o",
-    "п" => "p",
-    "р" => "r",
-    "с" => "s",
-    "т" => "t",
-    "у" => "u",
-    "ф" => "f",
-    "х" => "kh",
-    "ц" => "tc",
-    "ч" => "ch",
-    "ш" => "sh",
-    "щ" => "shch",
-    "ы" => "y",
-    "э" => "e",
-    "ю" => "iu",
-    "я" => "ia",
-    "ь" => ""
-    );
+        "а" => "a",
+        "б" => "b",
+        "в" => "v",
+        "г" => "g",
+        "д" => "d",
+        "е" => "e",
+        "ё" => "yo",
+        "ж" => "zh",
+        "з" => "z",
+        "и" => "i",
+        "й" => "iy",
+        "к" => "k",
+        "л" => "l",
+        "м" => "m",
+        "н" => "n",
+        "о" => "o",
+        "п" => "p",
+        "р" => "r",
+        "с" => "s",
+        "т" => "t",
+        "у" => "u",
+        "ф" => "f",
+        "х" => "kh",
+        "ц" => "tc",
+        "ч" => "ch",
+        "ш" => "sh",
+        "щ" => "shch",
+        "ы" => "y",
+        "э" => "e",
+        "ю" => "iu",
+        "я" => "ia",
+        "ь" => ""
+    ];
  
-    return strtr($text, $word);
+    // return strtr($text, $letters);
+
+    $textArr = explode(" ", $text);
+    $translate = '';
+    foreach ($textArr as $words) {
+
+        $wordArr = mb_str_split($words, 1);
+        $word = '';
+
+          foreach ($wordArr as $letter) {             
+              $word .= $letters[$letter];
+              $trans = $word . " ";
+              
+         }       
+         //echo $trans;
+         $translate .= $trans;
+                
+    }
+    return $translate;
+
 }
 //echo textTranslation ("нужно будет все это сделать через инпут");
 

@@ -5,8 +5,16 @@
 $inputText = $_POST['translation'];
 
 function changeSpace ($text) {
-    $underscores = array(" " => "_");
-    return strtr($text, $underscores);
+    // $underscores = array(" " => "_");
+    // return strtr($text, $underscores);
+    
+    $textArr = explode(" ", $text);
+    $underscores = implode("_", $textArr);
+    return $underscores;
+
+    // echo "<pre>";
+    // print_r($textArr);
+    // echo "</pre>";
 }
 
 ?>

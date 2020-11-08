@@ -13,45 +13,65 @@
 
     function textTranslation ($text) {
  
-        $word = array(
+        $letters = [
+            "а" => "a",
+            "б" => "b",
+            "в" => "v",
+            "г" => "g",
+            "д" => "d",
+            "е" => "e",
+            "ё" => "yo",
+            "ж" => "zh",
+            "з" => "z",
+            "и" => "i",
+            "й" => "iy",
+            "к" => "k",
+            "л" => "l",
+            "м" => "m",
+            "н" => "n",
+            "о" => "o",
+            "п" => "p",
+            "р" => "r",
+            "с" => "s",
+            "т" => "t",
+            "у" => "u",
+            "ф" => "f",
+            "х" => "kh",
+            "ц" => "tc",
+            "ч" => "ch",
+            "ш" => "sh",
+            "щ" => "shch",
+            "ы" => "y",
+            "э" => "e",
+            "ю" => "iu",
+            "я" => "ia",
+            "ь" => ""
+        ];
      
-        "а" => "a",
-        "б" => "b",
-        "в" => "v",
-        "г" => "g",
-        "д" => "d",
-        "е" => "e",
-        "ё" => "yo",
-        "ж" => "zh",
-        "з" => "z",
-        "и" => "i",
-        "й" => "iy",
-        "к" => "k",
-        "л" => "l",
-        "м" => "m",
-        "н" => "n",
-        "о" => "o",
-        "п" => "p",
-        "р" => "r",
-        "с" => "s",
-        "т" => "t",
-        "у" => "u",
-        "ф" => "f",
-        "х" => "kh",
-        "ц" => "tc",
-        "ч" => "ch",
-        "ш" => "sh",
-        "щ" => "shch",
-        "ы" => "y",
-        "э" => "e",
-        "ю" => "iu",
-        "я" => "ia",
-        "ь" => ""
-        );
 
-        $underscores = array(" " => "_");
-        //$textTranslate = strtr($text, $word);
-        return strtr(strtr($text, $word), $underscores);
+        // $underscores = array(" " => "_");
+        // return strtr(strtr($text, $letters), $underscores);
+
+        $textArr = explode(" ", $text);
+    $translate = '';
+    foreach ($textArr as $words) {
+
+        $wordArr = mb_str_split($words, 1);
+        $word = '';
+
+          foreach ($wordArr as $letter) {             
+              $word .= $letters[$letter];
+              $trans = $word . " ";
+         }       
+
+         $translate .= $trans;
+                
+    }
+        $transExp = explode(" ", $translate);
+        $translateUndescore = implode("_", $transExp);
+
+    return $translateUndescore;
+
     }
 
 ?>
