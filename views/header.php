@@ -1,6 +1,6 @@
 <?php
 
-require('../engine/action/header_menu.php');
+require(ACTION_DIR . 'header_menu.php');
 
 ?>
 

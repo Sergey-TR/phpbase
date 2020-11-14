@@ -4,7 +4,7 @@
           $imgUrl = "/img/{$image['route']}";  ?>
           <div class="product">
                    
-               <a href="/photo.php?id=<?= $image['id'] ?>">
+               <a href="/item_photo.php?id=<?= $image['id'] ?>">
                          
                <img class="product__img" src="<?= $imgUrl ?>" 
                alt="photo"></a>

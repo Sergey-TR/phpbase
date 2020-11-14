@@ -1,6 +1,8 @@
 <?php
 /**
- * 
+ * функция подключения к БД
+ * при подключении использую статическую переменную
+ * делаю проверку, если нет подключения, то подключаемся
  */
 if(!function_exists('getConnect')) {
     function getConnect () {
@@ -20,7 +22,9 @@ if(!function_exists('getConnect')) {
     }
 }
 /**
- * 
+ * функция когда в ответе одна строка
+ * на вход получает строку sql запроса на выборку по всей таблице "product_img"
+ * на выходе одна строка отсортированная по id
  */
 if(!function_exists('queryOne')) {
     function queryOne (string $sql) {
@@ -28,7 +32,9 @@ if(!function_exists('queryOne')) {
     }
 }
 /**
- * 
+ * функция обычный селект из БД
+ * на вход получает строку sql запроса на выборку по всей таблице "product_img"
+ * на выходе асоциативный массив всей таблицы
  */
 if(!function_exists('queryAll')) {
     function queryAll (string $sql) {
@@ -39,7 +45,11 @@ if(!function_exists('queryAll')) {
     }
 }
 /**
- * 
+ * функция выполнение запроса без выборки
+ * на входе строка sql запроса на редактирование колонки views
+ * mysqli_affected_rows — Получает число строк, затронутых предыдущей 
+ * операцией MySQL
+ * Возвращает число строк, затронутых последним запросом UPDATE
  */
 if(!function_exists('execute')) {
     function execute (string $sql): int {

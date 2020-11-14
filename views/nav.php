@@ -1,6 +1,6 @@
 <?php
 
-require('../engine/action/nav_menu.php');
+require(ACTION_DIR . 'nav_menu.php');
 
 ?>
 
