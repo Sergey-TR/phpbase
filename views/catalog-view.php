@@ -43,8 +43,10 @@
 			<div class="header__right">
 			<div class="header__right_cart">
 				<div class="cart__total">
-					<span class="cart__total_span">0</span>
-					<button class="cart__total_btn"></button>
+				
+					<span class="cart__total_span"><?= $totalCart ?></span>
+     
+					<a href="/basket" class="cart__total_btn"></a>
 				</div>				
 			</div>
 				<div class="my_account_btn">
@@ -89,7 +91,8 @@
      </div>
      <div class="product-box center">
      <?php foreach ($productImg as $image) { 
-          $imgUrl = "/img/{$image['route']}";  ?>
+		  $imgUrl = "/img/{$image['route']}";  ?>
+		  
           <div class="product">
                    
                <a href="/item_photo?id=<?= $image['id'] ?>">
@@ -102,12 +105,19 @@
                     src="https://raw.githubusercontent.com/Sergey-TR/images/main/star.png" 
                     alt="star">
                </p>
-          </div>
-          <a href="#" class="product__add">
+		  </div>
+          <!-- <a href="#" class="product__add">
                <img src="https://raw.githubusercontent.com/Sergey-TR/images/main/cartWhite.png" alt="">
                Add to Cart
-          </a>
-          </div>
+		  </a> -->
+		  <form class="form__add" method="POST" action="/addBasket" class="" style="position: absolute; top: 97px; left: 70px;">
+		 <input type="hidden" value="<?= $image['id'] ?>" name="id">
+		 <input type="hidden" value="1" name="quantity">
+		 <img src="https://raw.githubusercontent.com/Sergey-TR/images/main/cartWhite.png" alt=""> 
+		 <input class="product__add" type="submit" value="Add to Cart">
+		  </form>
+		  </div>
+		  
      <?php } ?>
      </div>   
 </body>

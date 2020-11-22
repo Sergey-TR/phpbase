@@ -23,7 +23,7 @@ if(!function_exists('getConnect')) {
         return $connection;
     }
 }
-
+$connect = getConnect();
 //$charset = mysqli_character_set_name(getConnect());
 //printf ("Текущая кодировка - %s\n",$charset);
 mysqli_set_charset(getConnect(), "utf8");
@@ -63,6 +63,35 @@ if(!function_exists('execute')) {
         $result = mysqli_query(getConnect(), $sql);
         return mysqli_affected_rows (getConnect());
     }
+}
+
+if(!function_exists('dbEscape')) {
+
+	function dbEscape ($val){
+//var_dump($val);
+        //$connection = $GLOBALS['connection'];
+        $connect = $GLOBALS['connect'];
+//var_dump($connection);
+		return mysqli_real_escape_string($connect, htmlspecialchars(strip_tags((string)$val)));
+	}
+}
+
+if(!function_exists('dbQuery')) {
+
+	function dbQuery (string $sql){
+
+		$connect = $GLOBALS['connect'];
+
+		$res = mysqli_query($connect, $sql);
+
+		// if(!$res){
+		// 	writeLog(mysqli_error($connect) . ' in (' . $sql . ')');
+		// 	return null;
+		// }
+//var_dump($res);
+        return $res;
+        
+	}
 }
 
 ?>

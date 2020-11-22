@@ -692,17 +692,22 @@
     animation: product__img 1s ease-in-out;
   }
   
-  .product:hover .product__add {
+  .product:hover .form__add {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-  
+  .product:hover .product__add {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+  }
   .product:hover .product__star {
     display: block;
   }
   
-  .product__add {
+  .form__add {
     position: absolute;
     top: 97px;
     left: 70px;
@@ -717,11 +722,36 @@
             justify-content: space-around;
     font-size: 13px;
     font-weight: bold;
-    color: #ffffff;
+    color: #747070;
+    border: 1px solid #ffffff;
+  }
+  .product__add {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 39px;
+    width: 123px;
+    display: none;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: space-around;
+    font-size: 13px;
+    font-weight: bold;
+    color: #777373;
     border: 1px solid #ffffff;
   }
   
   .product__add:hover {
+    color: #f16d7f;
+    -webkit-box-shadow: 0 0 5px #fff;
+            box-shadow: 0 0 5px #fff;
+  }
+
+  .form__add:hover {
+    color: #f16d7f;
     -webkit-box-shadow: 0 0 5px #fff;
             box-shadow: 0 0 5px #fff;
   }

@@ -3,8 +3,18 @@
 require_once (ROOT_DIR .'/engine/db/db.php');
 
 require(ROOT_DIR .'/engine/db/sql_prod_img.php');
+//require('basket.php');
 
 $productImg = getProductImages (); 
+
+if(!empty($_SESSION['basket'])) {
+    $itemCartIds = array_keys($_SESSION['basket']);
+   
+    $itemCarts = getProductImages($itemCartIds);
+    foreach($itemCarts as $cartInfo) {
+        $totalCart += $_SESSION['basket'][$cartInfo['id']];
+    }
+}
 
 $browseWomen = ['Dresses', 'Tops', 'Sweaters/Knits', 'Jackets/Coats', 'Blazers', 'Denim', 
 'Leggings/Pants', 'Skirts/Shorts', 'Accessories' ];
@@ -20,5 +30,5 @@ $navMenu = [
     'Featured' => [],
     'Hot Deals' => []
 ];
-
+   
 include(VIEW_DIR . 'catalog-view.php');

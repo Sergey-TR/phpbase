@@ -6,6 +6,8 @@ define('CONFIG_DIR', ROOT_DIR . 'config/');
 define('ACTION_DIR', ENGINE_DIR . 'action/');
 define('HELPERS_DIR', ENGINE_DIR . 'helpers/');
 
+session_start();
+
 require ROOT_DIR . '/engine/helpers/helper.php';
 
 $uriArr = array_values(array_filter(explode('/', explode('?',$_SERVER['REQUEST_URI'])[0]) , fn($it) => boolval($it))) ;

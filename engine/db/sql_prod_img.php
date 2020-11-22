@@ -6,8 +6,13 @@ require ('db.php');
  * на выходе асоциативный массив отсортированный по рейтингу просмотров
  */
 if(!function_exists('getProductImages')) {
-    function getProductImages () {  
-        return queryAll("SELECT * FROM product_img ORDER BY views desc");
+    $where = '';
+    function getProductImages (array $ids = []) {
+        if(!empty($ids)) {
+            $in = implode(', ', $ids);
+            $where = "WHERE id IN ($in)";
+        }  
+    return queryAll("SELECT * FROM product_img {$where}");
     }
 }
 /**
